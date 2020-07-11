@@ -20,12 +20,12 @@ func _process(delta):
         position.y = 0
         velocity.y *= -1
         
-    if position.x > get_viewport().size.x:
-        position.x = get_viewport().size.x
+    if position.x > get_viewport_rect().size.x:
+        position.x = get_viewport_rect().size.x
         velocity.x *= -1
         
-    if position.y > get_viewport().size.y:
-        position.y = get_viewport().size.y
+    if position.y > get_viewport_rect().size.y:
+        position.y = get_viewport_rect().size.y
         velocity.y *= -1
   
     if user_click and Input.is_action_just_pressed("click"):
