@@ -10,6 +10,8 @@ var controllers = [
     ]
 onready var controller = $Controller
 
+var btnCount = 0
+
 func _ready():
     changeController(0)
 
@@ -21,6 +23,8 @@ func _input(event):
         changeController(-1)
        
 func changeController(diff):
+    
+    
     var currentPosition = controller.get_child(0).position
     #var currentVelocity = controller.get_child(0).velocity
     
@@ -30,13 +34,26 @@ func changeController(diff):
     var controllerScene = load(controllers[currentControllerIndex])
     controller = controllerScene.instance()
     add_child(controller)
-    controller.connect("click", $Button, "click")
     controller.connect("click", $ClickSignal, "ping")
-    $Button.connect("clicked", self, "button_clicked")
-    
+
     $ControllerLabel.text = controller.name
     controller.get_child(0).position = currentPosition
     #controller.get_child(0).velocity = currentVelocity
+    spawnPopups()
 
 func button_clicked():
-    changeController(1)
+    btnCount -= 1
+    print(btnCount)
+    if btnCount == 0:
+        changeController(1)
+    
+        
+    
+func spawnPopups():
+    btnCount = randi() % 5 + 3
+    for i in range(btnCount):
+        var btnScn = load("res://button.tscn")
+        var btn = btnScn.instance()
+        add_child(btn)
+        controller.connect("click", btn, "click")
+        btn.connect("clicked", self, "button_clicked")
