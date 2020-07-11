@@ -1,6 +1,5 @@
 extends Node2D
 
-func ping(pos):
-    position = pos
+func ping():
     $AnimationPlayer.stop()
     $AnimationPlayer.play("ping")

@@ -1,17 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://controllers/pet.gd" type="Script" id=1]
 [ext_resource path="res://cursor.png" type="Texture" id=2]
-[ext_resource path="res://cursor.gd" type="Script" id=3]
 [ext_resource path="res://cursor.tscn" type="PackedScene" id=4]
 
 [node name="PetController" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Cursor" type="Node2D" parent="." instance=ExtResource( 4 )]
-script = ExtResource( 3 )
+[node name="Cursor" parent="." instance=ExtResource( 4 )]
 friction = 0.95
 shake = 10
+user_click = false
 
 [node name="Crosshair" type="Sprite" parent="."]
 position = Vector2( 13.9637, 20.9114 )

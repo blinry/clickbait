@@ -23,8 +23,8 @@ func _input(event):
         changeController(-1)
        
 func changeController(diff):
-    for btn in get_tree().get_nodes_in_group("popups"):
-        btn.queue_free()
+    #for btn in get_tree().get_nodes_in_group("popups"):
+    #    btn.queue_free()
     
     var currentPosition = controller.get_child(0).position
     #var currentVelocity = controller.get_child(0).velocity
@@ -35,7 +35,6 @@ func changeController(diff):
     var controllerScene = load(controllers[currentControllerIndex])
     controller = controllerScene.instance()
     add_child(controller)
-    controller.connect("click", $ClickSignal, "ping")
 
     $ControllerLabel.text = controller.name
     controller.get_child(0).position = currentPosition
@@ -46,9 +45,7 @@ func button_clicked():
     btnCount -= 1
     print(btnCount)
     if btnCount == 0:
-        changeController(1)
-    
-        
+        changeController(1) 
     
 func spawnPopups():
     btnCount = randi() % 5 + 3
@@ -56,5 +53,4 @@ func spawnPopups():
         var btnScn = load("res://button.tscn")
         var btn = btnScn.instance()
         add_child(btn)
-        controller.connect("click", btn, "click")
         btn.connect("clicked", self, "button_clicked")
