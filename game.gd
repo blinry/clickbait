@@ -4,8 +4,6 @@ var _file = "user://savegame.json"
 var state = {}
 
 func _ready():
-    #Input.set_custom_mouse_cursor()
-    #Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
     load_state()
@@ -34,5 +32,3 @@ func load_state() -> bool:
         state[key] = new_state[key]
     savegame.close()
     return true
-    
-    

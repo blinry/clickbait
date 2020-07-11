@@ -51,7 +51,7 @@ friction = 0.95
 shake = 10
 
 [node name="Crosshair" type="Sprite" parent="Controllers/PetController"]
-position = Vector2( 447.5, 139 )
+position = Vector2( 13.9637, 20.9114 )
 scale = Vector2( 0.0984615, 0.0828924 )
 texture = ExtResource( 7 )
 
@@ -72,6 +72,7 @@ align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="clicked" from="Button" to="." method="button_clicked"]
 [connection signal="click" from="Controllers/NormalController" to="Button" method="click"]
 [connection signal="click" from="Controllers/ShakyController" to="Button" method="click"]
 [connection signal="click" from="Controllers/SlipperyController" to="Button" method="click"]

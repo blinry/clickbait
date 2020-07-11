@@ -35,6 +35,7 @@ func _process(delta):
         position.y = get_viewport().size.y
         velocity.y *= -1
 
+    print(position)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
