@@ -3,19 +3,19 @@ extends Node2D
 var currentControllerIndex = 0
 var controllers = [
     "res://controllers/normal.tscn",
-    "res://controllers/invisible.tscn",
-    "res://controllers/fast.tscn",
+    "res://controllers/mirrored.tscn",
     "res://controllers/slow.tscn",
-    "res://controllers/gravity.tscn",
-    "res://controllers/giant.tscn",
+    "res://controllers/fast.tscn",
+    "res://controllers/slippery.tscn",
     "res://controllers/tiny.tscn",
+    "res://controllers/giant.tscn",
+    "res://controllers/gravity.tscn",
     "res://controllers/slingshot.tscn",
     "res://controllers/rocket.tscn",
-    "res://controllers/mirrored.tscn",
     "res://controllers/shaky.tscn",
-    "res://controllers/slippery.tscn",
     "res://controllers/pet.tscn",
-    ]
+    "res://controllers/invisible.tscn",
+]
 onready var controller = $Controller
 
 var btnCount = 0
@@ -71,3 +71,4 @@ func spawnPopups(wmin, wmax):
 func _on_Area2D_area_entered(area):
     changeController(0)
     spawnPopups(2, 4)
+    $Icon.hide()
