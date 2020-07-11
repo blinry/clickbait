@@ -23,7 +23,8 @@ func _input(event):
         changeController(-1)
        
 func changeController(diff):
-    
+    for btn in get_tree().get_nodes_in_group("popups"):
+        btn.queue_free()
     
     var currentPosition = controller.get_child(0).position
     #var currentVelocity = controller.get_child(0).velocity

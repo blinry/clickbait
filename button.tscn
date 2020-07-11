@@ -10,7 +10,9 @@ font_data = ExtResource( 1 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 151.177, 50.0287 )
 
-[node name="Button" type="Node2D"]
+[node name="Button" type="Node2D" groups=[
+"popups",
+]]
 script = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
