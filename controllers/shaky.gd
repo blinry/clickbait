@@ -10,5 +10,3 @@ func _input(event):
         $Cursor.position += delta
         $Cursor.position.x += rand_range(-delta.length(), delta.length())
         $Cursor.position.y += rand_range(-delta.length(), delta.length())
-        
-    

@@ -1,13 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://controllers/normal.gd" type="Script" id=1]
-[ext_resource path="res://cursor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://controllers/normal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://button.tscn" type="PackedScene" id=3]
-[ext_resource path="res://controllers/mirrored.gd" type="Script" id=4]
-[ext_resource path="res://controllers/shaky.gd" type="Script" id=5]
-[ext_resource path="res://controllers/slippery.gd" type="Script" id=6]
-[ext_resource path="res://cursor.png" type="Texture" id=7]
-[ext_resource path="res://controllers/pet.gd" type="Script" id=8]
 [ext_resource path="res://main.gd" type="Script" id=9]
 [ext_resource path="res://fonts/comic-jens.jens.otf" type="DynamicFontData" id=10]
 
@@ -21,45 +15,7 @@ script = ExtResource( 9 )
 [node name="Button" parent="." instance=ExtResource( 3 )]
 position = Vector2( 320.092, 259.294 )
 
-[node name="Controllers" type="Node" parent="."]
-
-[node name="NormalController" type="Node2D" parent="Controllers"]
-script = ExtResource( 1 )
-
-[node name="Cursor" parent="Controllers/NormalController" instance=ExtResource( 2 )]
-
-[node name="ShakyController" type="Node2D" parent="Controllers"]
-visible = false
-script = ExtResource( 5 )
-
-[node name="Cursor" parent="Controllers/ShakyController" instance=ExtResource( 2 )]
-shake = 25
-
-[node name="SlipperyController" type="Node2D" parent="Controllers"]
-visible = false
-script = ExtResource( 6 )
-
-[node name="Cursor" parent="Controllers/SlipperyController" instance=ExtResource( 2 )]
-friction = 0.95
-
-[node name="PetController" type="Node2D" parent="Controllers"]
-visible = false
-script = ExtResource( 8 )
-
-[node name="Cursor" parent="Controllers/PetController" instance=ExtResource( 2 )]
-friction = 0.95
-shake = 10
-
-[node name="Crosshair" type="Sprite" parent="Controllers/PetController"]
-position = Vector2( 13.9637, 20.9114 )
-scale = Vector2( 0.0984615, 0.0828924 )
-texture = ExtResource( 7 )
-
-[node name="MirroredController" type="Node2D" parent="Controllers"]
-visible = false
-script = ExtResource( 4 )
-
-[node name="Cursor" parent="Controllers/MirroredController" instance=ExtResource( 2 )]
+[node name="Controller" parent="." instance=ExtResource( 2 )]
 
 [node name="ControllerLabel" type="Label" parent="."]
 anchor_bottom = 1.0
@@ -73,7 +29,3 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="clicked" from="Button" to="." method="button_clicked"]
-[connection signal="click" from="Controllers/NormalController" to="Button" method="click"]
-[connection signal="click" from="Controllers/ShakyController" to="Button" method="click"]
-[connection signal="click" from="Controllers/SlipperyController" to="Button" method="click"]
-[connection signal="click" from="Controllers/PetController" to="Button" method="click"]

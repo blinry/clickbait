@@ -1,6 +1,14 @@
 extends Node2D
 
-var currentController = 0
+var currentControllerIndex = 0
+var controllers = [
+    "res://controllers/normal.tscn",
+    "res://controllers/mirrored.tscn",
+    "res://controllers/shaky.tscn",
+    "res://controllers/slippery.tscn",
+    "res://controllers/pet.tscn",
+    ]
+onready var controller = $Controller
 
 func _ready():
     changeController(0)
@@ -13,15 +21,21 @@ func _input(event):
         changeController(-1)
        
 func changeController(diff):
-    var currentPosition = $Controllers.get_child(currentController).get_child(0).position
-    var currentVelocity = $Controllers.get_child(currentController).get_child(0).velocity
+    var currentPosition = controller.get_child(0).position
+    var currentVelocity = controller.get_child(0).velocity
     
-    $Controllers.get_child(currentController).hide()
-    currentController = (currentController + diff + $Controllers.get_child_count()) % $Controllers.get_child_count()
-    $Controllers.get_child(currentController).show()
-    $ControllerLabel.text = $Controllers.get_child(currentController).name
-    $Controllers.get_child(currentController).get_child(0).position = currentPosition
-    $Controllers.get_child(currentController).get_child(0).velocity = currentVelocity
+    controller.queue_free()
+    
+    currentControllerIndex = (currentControllerIndex + diff + controllers.size()) % controllers.size()
+    var controllerScene = load(controllers[currentControllerIndex])
+    controller = controllerScene.instance()
+    add_child(controller)
+    controller.connect("click", $Button, "click")
+    $Button.connect("clicked", self, "button_clicked")
+    
+    $ControllerLabel.text = controller.name
+    controller.get_child(0).position = currentPosition
+    controller.get_child(0).velocity = currentVelocity
 
 func button_clicked():
     changeController(1)
