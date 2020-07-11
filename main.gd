@@ -2,6 +2,9 @@ extends Node2D
 
 var currentControllerIndex = 0
 var controllers = [
+    "res://controllers/gravity.tscn",
+    "res://controllers/giant.tscn",
+    "res://controllers/tiny.tscn",
     "res://controllers/slingshot.tscn",
     "res://controllers/rocket.tscn",
     "res://controllers/normal.tscn",
