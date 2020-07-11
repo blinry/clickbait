@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://cursor.png" type="Texture" id=1]
+
+[node name="Cursor" type="Node2D"]
+
+[node name="cursor" type="Sprite" parent="."]
+position = Vector2( 20.3406, 35.4679 )
+scale = Vector2( 0.138013, 0.138013 )
+texture = ExtResource( 1 )

@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Untitled Game"
+config/name="GMTK 2020"
 run/main_scene="res://main.tscn"
 
 [autoload]
