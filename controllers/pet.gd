@@ -1,5 +1,6 @@
 extends Node
 
+
 func _input(event):
     if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
         var direction = $Crosshair.position - $Cursor.position

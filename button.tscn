@@ -16,13 +16,14 @@ extents = Vector2( 151.177, 50.0287 )
 script = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -149.452, -50.049 )
 polygon = PoolVector2Array( 1.58539, 1.22586, 2.1814, 102.543, 300.173, 101.947, 298.981, 1.82184 )
 
 [node name="Label" type="Label" parent="Polygon2D"]
-margin_left = 46.4868
-margin_top = 17.284
-margin_right = 265.487
-margin_bottom = 89.284
+margin_left = 36.0599
+margin_top = 15.8937
+margin_right = 255.06
+margin_bottom = 87.8937
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Click me!"
@@ -31,12 +32,11 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 150.188, 51.8505 )
+position = Vector2( 0.736038, 1.80149 )
 shape = SubResource( 2 )
 [connection signal="area_entered" from="Area2D" to="." method="area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="area_exited"]

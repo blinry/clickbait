@@ -13,6 +13,7 @@ shake = 10
 user_click = false
 
 [node name="Crosshair" type="Sprite" parent="."]
-position = Vector2( 13.9637, 20.9114 )
+position = Vector2( 960.295, 503.315 )
 scale = Vector2( 0.0984615, 0.0828924 )
+z_index = 1
 texture = ExtResource( 2 )
