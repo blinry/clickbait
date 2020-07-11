@@ -24,6 +24,10 @@ func _ready():
     changeController(0)
 
 func _input(event):
+    if event.is_action_pressed("click"):
+        if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    
     if event.is_action_pressed("next_controller"):
         changeController(1)
         
