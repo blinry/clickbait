@@ -34,3 +34,5 @@ func load_state() -> bool:
         state[key] = new_state[key]
     savegame.close()
     return true
+    
+    
