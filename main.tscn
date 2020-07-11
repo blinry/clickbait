@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://controllers/normal.gd" type="Script" id=1]
 [ext_resource path="res://cursor.tscn" type="PackedScene" id=2]
@@ -8,46 +8,54 @@
 [ext_resource path="res://controllers/slippery.gd" type="Script" id=6]
 [ext_resource path="res://cursor.png" type="Texture" id=7]
 [ext_resource path="res://controllers/pet.gd" type="Script" id=8]
+[ext_resource path="res://main.gd" type="Script" id=9]
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 9 )
 
-[node name="NormalController" type="Node" parent="."]
+[node name="Button" parent="." instance=ExtResource( 3 )]
+position = Vector2( 320.092, 259.294 )
+
+[node name="Controllers" type="Node" parent="."]
+
+[node name="NormalController" type="Node2D" parent="Controllers"]
 script = ExtResource( 1 )
 
-[node name="Cursor" parent="NormalController" instance=ExtResource( 2 )]
+[node name="Cursor" parent="Controllers/NormalController" instance=ExtResource( 2 )]
 
-[node name="ShakyController" type="Node" parent="."]
+[node name="ShakyController" type="Node2D" parent="Controllers"]
+visible = false
 script = ExtResource( 5 )
 
-[node name="Cursor" parent="ShakyController" instance=ExtResource( 2 )]
+[node name="Cursor" parent="Controllers/ShakyController" instance=ExtResource( 2 )]
 shake = 25
 
-[node name="SlipperyController" type="Node" parent="."]
+[node name="SlipperyController" type="Node2D" parent="Controllers"]
+visible = false
 script = ExtResource( 6 )
 
-[node name="Cursor" parent="SlipperyController" instance=ExtResource( 2 )]
+[node name="Cursor" parent="Controllers/SlipperyController" instance=ExtResource( 2 )]
 friction = 0.95
 
-[node name="PetController" type="Node" parent="."]
+[node name="PetController" type="Node2D" parent="Controllers"]
+visible = false
 script = ExtResource( 8 )
 
-[node name="Cursor" parent="PetController" instance=ExtResource( 2 )]
+[node name="Cursor" parent="Controllers/PetController" instance=ExtResource( 2 )]
 friction = 0.95
 shake = 10
 
-[node name="Crosshair" type="Sprite" parent="PetController"]
+[node name="Crosshair" type="Sprite" parent="Controllers/PetController"]
 position = Vector2( 447.5, 139 )
 scale = Vector2( 0.0984615, 0.0828924 )
 texture = ExtResource( 7 )
 
-[node name="MirroredController" type="Node" parent="."]
+[node name="MirroredController" type="Node2D" parent="Controllers"]
+visible = false
 script = ExtResource( 4 )
 
-[node name="Cursor" parent="MirroredController" instance=ExtResource( 2 )]
-
-[node name="Button" parent="." instance=ExtResource( 3 )]
-position = Vector2( 320.092, 259.294 )
-[connection signal="click" from="NormalController" to="Button" method="click"]
-[connection signal="click" from="ShakyController" to="Button" method="click"]
-[connection signal="click" from="SlipperyController" to="Button" method="click"]
-[connection signal="click" from="PetController" to="Button" method="click"]
+[node name="Cursor" parent="Controllers/MirroredController" instance=ExtResource( 2 )]
+[connection signal="click" from="Controllers/NormalController" to="Button" method="click"]
+[connection signal="click" from="Controllers/ShakyController" to="Button" method="click"]
+[connection signal="click" from="Controllers/SlipperyController" to="Button" method="click"]
+[connection signal="click" from="Controllers/PetController" to="Button" method="click"]
