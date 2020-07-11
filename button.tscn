@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/comic-jens.jens.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://button.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 151.177, 50.0287 )
+
+[node name="Button" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 1.58539, 1.22586, 2.1814, 102.543, 300.173, 101.947, 298.981, 1.82184 )
+
+[node name="Label" type="Label" parent="Polygon2D"]
+margin_left = 46.4868
+margin_top = 17.284
+margin_right = 265.487
+margin_bottom = 89.284
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Click me!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 150.188, 51.8505 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="Area2D" to="." method="area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="area_exited"]
