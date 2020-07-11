@@ -10,6 +10,6 @@ func area_entered(area):
 func area_exited(area):
     hovered = false
 
-func click():
+func click(pos):
     if hovered:
         emit_signal("clicked")

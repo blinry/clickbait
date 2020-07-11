@@ -22,7 +22,7 @@ func _input(event):
        
 func changeController(diff):
     var currentPosition = controller.get_child(0).position
-    var currentVelocity = controller.get_child(0).velocity
+    #var currentVelocity = controller.get_child(0).velocity
     
     controller.queue_free()
     
@@ -31,11 +31,12 @@ func changeController(diff):
     controller = controllerScene.instance()
     add_child(controller)
     controller.connect("click", $Button, "click")
+    controller.connect("click", $ClickSignal, "ping")
     $Button.connect("clicked", self, "button_clicked")
     
     $ControllerLabel.text = controller.name
     controller.get_child(0).position = currentPosition
-    controller.get_child(0).velocity = currentVelocity
+    #controller.get_child(0).velocity = currentVelocity
 
 func button_clicked():
     changeController(1)
