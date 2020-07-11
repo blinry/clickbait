@@ -47,7 +47,7 @@ func changeController(diff):
     $ControllerLabel.text = controller.name
     controller.get_child(0).position = currentPosition
     #controller.get_child(0).velocity = currentVelocity
-    spawnPopups()
+    spawnPopups(3, 8)
 
 func button_clicked():
     btnCount -= 1
@@ -55,10 +55,10 @@ func button_clicked():
     if btnCount == 0:
         changeController(1) 
     
-func spawnPopups():
-    btnCount = randi() % 5 + 3
+func spawnPopups(wmin, wmax):
+    btnCount = randi() % (wmax-wmin) + wmin
     for i in range(btnCount):
-        var btnScn = load("res://button.tscn")
+        var btnScn = load("res://window.tscn")
         var btn = btnScn.instance()
         add_child(btn)
         btn.connect("clicked", self, "button_clicked")
