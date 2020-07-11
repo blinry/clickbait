@@ -20,8 +20,8 @@ onready var controller = $Controller
 
 var btnCount = 0
 
-func _ready():
-    changeController(0)
+#func _ready():
+    #changeController(0)
 
 func _input(event):
     if event.is_action_pressed("next_controller"):
@@ -62,3 +62,8 @@ func spawnPopups(wmin, wmax):
         var btn = btnScn.instance()
         add_child(btn)
         btn.connect("clicked", self, "button_clicked")
+
+
+func _on_Area2D_area_entered(area):
+    changeController(0)
+    spawnPopups(2, 4)
