@@ -1,4 +1,4 @@
-name = "gmtk-2020"
+name = "clickbait"
 
 all: linux macos windows web
 

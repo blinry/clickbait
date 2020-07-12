@@ -1,23 +1,35 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://pop.wav" type="AudioStream" id=1]
 [ext_resource path="res://window.gd" type="Script" id=2]
 [ext_resource path="res://close.wav" type="AudioStream" id=3]
-[ext_resource path="res://error.wav" type="AudioStream" id=4]
+[ext_resource path="res://bad.wav" type="AudioStream" id=4]
+[ext_resource path="res://fonts/comic-jens.jens.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.8221, 24.9003 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=7]
 resource_local_to_scene = true
-extents = Vector2( 30.9641, 27.407 )
+size = 30
+font_data = ExtResource( 5 )
 
 [sub_resource type="RectangleShape2D" id=3]
 resource_local_to_scene = true
+extents = Vector2( 30.9641, 27.407 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
 extents = Vector2( 25.8564, 20.5764 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "spawn"
+[sub_resource type="Animation" id=5]
 length = 0.3
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:scale:x")
@@ -46,7 +58,7 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 478.0
+margin_right = 480.0
 margin_bottom = 359.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -64,23 +76,24 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-margin_right = 458.0
+margin_right = 460.0
 margin_bottom = 339.0
 custom_constants/separation = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-margin_right = 458.0
+margin_right = 460.0
 margin_bottom = 50.0
 alignment = 2
 
 [node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 408.0
-margin_right = 458.0
+margin_left = 410.0
+margin_right = 460.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 color = Color( 0.737255, 0.133333, 0.133333, 1 )
 
 [node name="Area2D" type="Area2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect"]
+visible = false
 position = Vector2( 76.7403, -33.8961 )
 collision_mask = 2
 
@@ -88,20 +101,32 @@ collision_mask = 2
 position = Vector2( -51.679, 58.9174 )
 shape = SubResource( 1 )
 
-[node name="AdvColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdvColorRect" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 margin_top = 60.0
-margin_right = 458.0
+margin_right = 460.0
 margin_bottom = 339.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
 
 [node name="advertisement" type="Area2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect"]
+position = Vector2( 0.150414, 0.128616 )
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect/advertisement"]
 position = Vector2( 42.2396, 37.5792 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="body" type="Area2D" parent="Panel"]
 position = Vector2( 0.291367, 0.506622 )
@@ -110,14 +135,14 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/body"]
 position = Vector2( 36.2724, 30.4269 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="ShowTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/spawn = SubResource( 4 )
+anims/spawn = SubResource( 5 )
 
 [node name="Pop" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 238.055, 183.049 )

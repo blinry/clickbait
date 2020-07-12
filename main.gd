@@ -2,6 +2,7 @@ extends Node2D
 
 var running = false
 var won = false
+var intro_phase = 0
 
 var maxPopups = 20
 
@@ -43,24 +44,46 @@ func _input(event):
         Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
         get_tree().paused = true
     
-    if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
-        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    #if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+    #    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
   
 func _process(delta):
     if running:
         var numPopups = get_tree().get_nodes_in_group("popups").size()
-        if numPopups == 0 and not won:
-            changeController(1)
-            if currentControllerIndex == 0:
-                win()
+        
+        if intro_phase >= 6:
+            if numPopups == 0 and not won:
+                changeController(1)
+                if currentControllerIndex == 0:
+                    win()
+                else:
+                    spawnPopups(5, 8)
+            if won:
+                if randi() % (2) == 0:
+                    spawnPopups(1,1)
             else:
+                if randi() % (60*5) == 0:
+                    spawnPopups(1,1)
+                       
+        if numPopups == 0:
+            if intro_phase == 5:
                 spawnPopups(5, 8)
-        if won:
-            if randi() % (2) == 0:
-                spawnPopups(1,1)
-        else:
-            if randi() % (60*5) == 0:
-                spawnPopups(1,1)
+                intro_phase = 6
+            if intro_phase == 4:
+                spawnPopup("Close all popups to win!")
+                intro_phase = 5
+            if intro_phase == 3:
+                spawnPopup("By blinry and bleeptrack")
+                intro_phase = 4
+            if intro_phase == 2:
+                spawnPopup("For GMTK game jam 2020")
+                intro_phase = 3
+            if intro_phase == 1:
+                spawnPopup("A game made in 48 hours")
+                intro_phase = 2
+            if intro_phase == 0:
+                spawnPopup("CLICKBAIT")
+                intro_phase = 1
       
 func win():
     print("you win")
@@ -104,15 +127,19 @@ func spawnPopups(wmin, wmax):
     print(btnCount)
     
     for i in range(btnCount):
-        var btnScn = load("res://window.tscn")
-        var btn = btnScn.instance()
-        add_child(btn)
+        spawnPopup()
+
+func spawnPopup(text=""):
+    var btnScn = load("res://window.tscn")
+    var btn = btnScn.instance()
+    btn.set_text(text)
+    add_child(btn)
 
 func icon_clicked(viewport, event, shape_idx):
     if event is InputEventMouseButton:
         changeController(0)
         controller.get_child(0).position = event.position
-        spawnPopups(5, 8)
+        #spawnPopups(5, 8)
         running = true
         $Icon.hide()
         if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
