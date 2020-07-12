@@ -7,4 +7,4 @@
 script = ExtResource( 1 )
 
 [node name="Cursor" parent="." instance=ExtResource( 3 )]
-notificationText = "Tip: if your mouse cursor is too fast, you can slow it down."
+notificationText = "Your cursor is too fast? I slowed it down for you."
