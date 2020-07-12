@@ -1,5 +1,7 @@
 extends Node2D
 
+var running = false
+
 var currentControllerIndex = 0
 var controllers = [
     "res://controllers/normal.tscn",
@@ -29,7 +31,14 @@ func _input(event):
         changeController(1)
         
     if event.is_action_pressed("prev_controller"):
-        changeController(-1)   
+        changeController(-1)
+  
+func _process(delta):
+    if running:
+        var numPopups = get_tree().get_nodes_in_group("popups").size()
+        if numPopups == 0:
+            changeController(1)
+            spawnPopups(5, 8)
        
 func changeController(diff):
     var currentPosition = controller.get_child(0).position
@@ -43,15 +52,16 @@ func changeController(diff):
 
     $ControllerLabel.text = controller.name
     controller.get_child(0).position = currentPosition
-
-func button_clicked():
-    var numPopups = get_tree().get_nodes_in_group("popups").size()
-    if numPopups == 0:
-        changeController(1)
-        spawnPopups(5, 8)
     
 func spawnPopups(wmin, wmax):
+    var numPopups = get_tree().get_nodes_in_group("popups").size()
+    
     btnCount = randi() % (wmax-wmin) + wmin
+    
+    # Limit total number of popups.
+    var maxPopups = 20
+    btnCount = min(btnCount, maxPopups-numPopups)
+    
     for i in range(btnCount):
         var btnScn = load("res://window.tscn")
         var btn = btnScn.instance()
@@ -61,4 +71,5 @@ func spawnPopups(wmin, wmax):
 func _on_Area2D_area_entered(area):
     changeController(0)
     spawnPopups(5, 8)
+    running = true
     $Icon.hide()
