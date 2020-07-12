@@ -21,11 +21,3 @@ friction = 0.9
 [node name="Cursor4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 351.088, 440.508 )
 friction = 0.9
-
-[node name="Cursor6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 785.294, 168.837 )
-friction = 0.9
-
-[node name="Cursor5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1735.61, 440.508 )
-friction = 0.9

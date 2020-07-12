@@ -8,4 +8,4 @@ script = ExtResource( 2 )
 
 [node name="Cursor" parent="." instance=ExtResource( 3 )]
 shake = 15
-notificationText = "Tip: remember to drink enough caffein at work!"
+notificationText = "Tip: remember to drink enough caffeine at work!"
