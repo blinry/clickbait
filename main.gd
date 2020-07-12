@@ -46,7 +46,7 @@ func _input(event):
 func _process(delta):
     if running:
         var numPopups = get_tree().get_nodes_in_group("popups").size()
-        if numPopups == 0:
+        if numPopups == 0 and not won:
             changeController(1)
             if currentControllerIndex == 0:
                 win()
