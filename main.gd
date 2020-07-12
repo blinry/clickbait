@@ -58,7 +58,7 @@ func _process(delta):
     if running:
         var numPopups = get_tree().get_nodes_in_group("popups").size()
         
-        if intro_phase >= 6:
+        if intro_phase >= 5:
             if numPopups == 0 and not won:
                 changeController(1)
                 if currentControllerIndex == 0:
@@ -68,16 +68,10 @@ func _process(delta):
             if won:
                 if randi() % (2) == 0:
                     spawnPopups(1,1)
-            else:
-                if randi() % (60*5) == 0:
-                    spawnPopups(1,1)
                        
         if numPopups == 0:
-            if intro_phase == 5:
-                spawnPopups(5, 8)
-                intro_phase = 6
             if intro_phase == 4:
-                spawnPopup("Close all popups to win!")
+                spawnPopups(5, 8)
                 intro_phase = 5
             if intro_phase == 3:
                 spawnPopup("By blinry and bleeptrack")
@@ -89,7 +83,7 @@ func _process(delta):
                 spawnPopup("A game made in 48 hours")
                 intro_phase = 2
             if intro_phase == 0:
-                spawnPopup("CLICKBAIT")
+                spawnPopup("CLICKBAIT\n\nClose all popups to win.")
                 intro_phase = 1
       
 func win():

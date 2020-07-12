@@ -19,7 +19,7 @@ func _input(event):
             $Cursor/Line.points[1] = $Cursor/Line.points[0]
             $Cursor/Line.show()
         if event.is_action_released("click"):
-            $Cursor.velocity = -direction/10
+            $Cursor.velocity = direction/10
             flying = true
             $Cursor/Line.points[1] = $Cursor/Line.points[0]
             $Cursor/Line.hide()

@@ -6,4 +6,4 @@ func _input(event):
         $Cursor.velocity += delta/30
 
 func _process(delta):
-        $Cursor.velocity += Vector2(0,50*delta)
+        $Cursor.velocity += Vector2(0,30*delta)
