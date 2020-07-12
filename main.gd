@@ -45,6 +45,8 @@ func _process(delta):
             spawnPopups(5, 8)
        
 func changeController(diff):
+    $Notification.notify("Achtung! Dies ist ein Test!")
+    
     var currentPosition = Vector2(0,0)
     if controller:
         currentPosition = controller.get_child(0).position
