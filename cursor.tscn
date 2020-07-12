@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://cursor.png" type="Texture" id=1]
 [ext_resource path="res://cursor.gd" type="Script" id=2]
+[ext_resource path="res://bounce.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.96598
@@ -34,4 +35,7 @@ shape = SubResource( 1 )
 [node name="ClickTimer" type="Timer" parent="."]
 wait_time = 0.033
 one_shot = true
+
+[node name="Bounce" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 [connection signal="timeout" from="ClickTimer" to="." method="click_timeout"]

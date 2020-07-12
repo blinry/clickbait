@@ -15,21 +15,33 @@ func _process(delta):
     position.x += rand_range(-shake, shake)
     position.y += rand_range(-shake, shake)
     
+    var did_bounce_x = false
+    var did_bounce_y = false
+    
     if position.x < 0:
         position.x = 0
         velocity.x *= -1
+        did_bounce_x = true
         
     if position.y < 0:
         position.y = 0
         velocity.y *= -1
+        did_bounce_y = true
         
     if position.x > get_viewport_rect().size.x:
         position.x = get_viewport_rect().size.x
         velocity.x *= -1
+        did_bounce_x = true
         
     if position.y > get_viewport_rect().size.y:
         position.y = get_viewport_rect().size.y
         velocity.y *= -1
+        did_bounce_y = true
+    
+    if (did_bounce_x and abs(velocity.x) > 2) or (did_bounce_y and abs(velocity.y) > 2):
+        print(velocity.length())
+        $Bounce.volume_db = range_lerp(velocity.length(), 0, 50, -10, 0)
+        $Bounce.play()
   
     if user_click and Input.is_action_just_pressed("click"):
         click()
