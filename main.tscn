@@ -21,6 +21,7 @@ extents = Vector2( 610.105, 664.737 )
 script = ExtResource( 9 )
 
 [node name="ControllerLabel" type="Label" parent="."]
+visible = false
 anchor_bottom = 1.0
 margin_left = 1487.86
 margin_top = 24.6028

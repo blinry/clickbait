@@ -20,10 +20,10 @@ var controllers = [
     "res://controllers/mirrored.tscn", #pilots prefer inverted controls
     "res://controllers/shaky.tscn", #Tip: remember to dring enough coffein at work
     "res://controllers/rocket.tscn", #Boost your creativity like a rocket!
-    "res://controllers/slippery.tscn", #Winter is coming
     "res://controllers/gravity.tscn", #Let your curser help you lift your heavy workload.
+    "res://controllers/slippery.tscn", #Winter is coming
     "res://controllers/slingshot.tscn", #Fatigue detected! Relax with a quick minigolf session.
-    "res://controllers/pet.tscn", #Let your cursor be your autonomous friend!
+    #"res://controllers/pet.tscn", #Let your cursor be your autonomous friend!
     "res://controllers/invisible.tscn", # Hide your cursor for a focused view
 ]
 onready var controller = null

@@ -39,7 +39,7 @@ func _on_advertisement_area_entered(area):
         $Error.pitch_scale = rand_range(0.8,1.2)
         $Error.play()
         game.ad_clicks += 1
-        get_parent().spawnPopups(1,3)
+        get_parent().spawnPopups(1,2)
     
 func _on_AdvColorRect_resized():
     adCollisionShape.position = adColorRect.rect_size / 2
