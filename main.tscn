@@ -10,11 +10,11 @@
 size = 30
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 100
 font_data = ExtResource( 10 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 610.105, 664.737 )
 
 [node name="Main" type="Node2D"]
@@ -48,7 +48,7 @@ margin_left = 450.237
 margin_top = 638.96
 margin_right = 1515.24
 margin_bottom = 850.96
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Clickbait"
 align = 1
 __meta__ = {
@@ -63,7 +63,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
 position = Vector2( 912.295, 695.853 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="TheAlmightyUnpauser" type="Node2D" parent="."]
 pause_mode = 2
