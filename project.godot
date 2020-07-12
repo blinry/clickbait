@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GMTK 2020"
+config/name="Clickbait"
 run/main_scene="res://main.tscn"
 
 [autoload]

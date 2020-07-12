@@ -8,7 +8,7 @@ onready var bodyCollisionShape = $Panel/body/CollisionShape2D
 func _ready():
     var padding = get_viewport_rect().size.x/128
     
-    $Panel.rect_size.x = rand_range(200,500)
+    $Panel.rect_size.x = rand_range(300,500)
     $Panel.rect_size.y = rand_range(200,500)
     
     var w = $Panel.rect_size.x
@@ -36,8 +36,8 @@ func area_entered(area):
  
 func _on_advertisement_area_entered(area):
     if self == area.get_owner().topmost_popup:
-        #$Error.pitch_scale = rand_range(0.8,1.2)
-        #$Error.play()
+        $Error.pitch_scale = rand_range(0.8,1.2)
+        $Error.play()
         game.ad_clicks += 1
         get_parent().spawnPopups(1,3)
     
@@ -47,3 +47,6 @@ func _on_AdvColorRect_resized():
 
     bodyCollisionShape.position = $Panel.rect_size / 2
     bodyCollisionShape.shape.extents = $Panel.rect_size /2
+
+func set_text(text):
+    $Panel/MarginContainer/VBoxContainer/AdvColorRect.text = text

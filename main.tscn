@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://cursor.png" type="Texture" id=1]
 [ext_resource path="res://unpauser.gd" type="Script" id=2]
 [ext_resource path="res://notification.tscn" type="PackedScene" id=3]
 [ext_resource path="res://main.gd" type="Script" id=9]
@@ -10,16 +10,12 @@
 size = 30
 font_data = ExtResource( 10 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 104.656, 130.711 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 150
+[sub_resource type="DynamicFont" id=2]
+size = 100
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 60
-font_data = ExtResource( 10 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 610.105, 664.737 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 9 )
@@ -39,60 +35,35 @@ __meta__ = {
 [node name="Icon" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Icon"]
-position = Vector2( 962.82, 875.133 )
-scale = Vector2( 0.5, 0.5 )
+modulate = Color( 0.352941, 0.380392, 0.819608, 1 )
+position = Vector2( 972.343, 469.15 )
+scale = Vector2( 0.17507, 0.17507 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Area2D" type="Area2D" parent="Icon/Sprite"]
-position = Vector2( -1777.29, -997.23 )
-scale = Vector2( 2, 2 )
+[node name="Label" type="Label" parent="Icon"]
+margin_left = 450.237
+margin_top = 638.96
+margin_right = 1515.24
+margin_bottom = 850.96
+custom_fonts/font = SubResource( 2 )
+text = "Clickbait"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="Icon"]
+position = Vector2( 661.193, 294.565 )
+scale = Vector2( 0.35014, 0.35014 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Sprite/Area2D"]
-position = Vector2( 888.977, 497.652 )
-shape = SubResource( 2 )
-
-[node name="Label" type="Label" parent="Icon"]
-margin_left = 452.618
-margin_top = 67.6028
-margin_right = 1517.62
-margin_bottom = 279.603
-custom_fonts/font = SubResource( 3 )
-text = "Cursed Cursor!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="Icon"]
-margin_left = 472.882
-margin_top = 376.518
-margin_right = 1479.88
-margin_bottom = 637.518
-custom_fonts/font = SubResource( 4 )
-text = "Made for GMTK Game Jam 2020
-in 48 hours
-by blinry and bleeptrack"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="Icon"]
-margin_left = 137.842
-margin_top = 723.316
-margin_right = 964.842
-margin_bottom = 857.316
-rect_rotation = 11.3449
-custom_fonts/font = SubResource( 4 )
-text = "Click to start -->"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
+position = Vector2( 912.295, 695.853 )
+shape = SubResource( 3 )
 
 [node name="TheAlmightyUnpauser" type="Node2D" parent="."]
 pause_mode = 2
@@ -100,4 +71,4 @@ script = ExtResource( 2 )
 
 [node name="Notification" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1919.54, 1080.14 )
-[connection signal="input_event" from="Icon/Sprite/Area2D" to="." method="icon_clicked"]
+[connection signal="input_event" from="Icon/Area2D" to="." method="icon_clicked"]
