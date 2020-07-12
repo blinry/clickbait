@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://cursor.png" type="Texture" id=1]
 [ext_resource path="res://cursor.gd" type="Script" id=2]
 [ext_resource path="res://click_signal.gd" type="Script" id=3]
+[ext_resource path="res://click.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.96598
 
 [sub_resource type="Animation" id=2]
 resource_name = "ping"
+length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:modulate:a")
 tracks/0/interp = 1
@@ -17,7 +19,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [node name="Cursor" type="Node2D"]
@@ -25,7 +27,7 @@ z_index = 1
 script = ExtResource( 2 )
 
 [node name="cursor" type="Sprite" parent="."]
-position = Vector2( 34.0675, 49.4712 )
+position = Vector2( 33.1228, 49.4712 )
 scale = Vector2( 0.06, 0.06 )
 texture = ExtResource( 1 )
 
@@ -45,16 +47,12 @@ one_shot = true
 modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="ClickSignal"]
-margin_left = -8.0
-margin_top = -7.0
-margin_right = 8.0
-margin_bottom = 8.0
-color = Color( 0.243137, 0.137255, 0.741176, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ClickSignal"]
 anims/ping = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="ClickSignal"]
+position = Vector2( -7.71161, -13.5413 )
+rotation = -0.453786
+scale = Vector2( 0.0453366, 0.0453366 )
+texture = ExtResource( 4 )
 [connection signal="timeout" from="ClickTimer" to="." method="click_timeout"]
