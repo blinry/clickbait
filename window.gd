@@ -17,8 +17,16 @@ func _ready():
     position.x = rand_range(padding,get_viewport_rect().size.x-padding-w)
     position.y = rand_range(padding,get_viewport_rect().size.y-padding-h)
     
+    scale = Vector2(0,0)
+    $ShowTimer.wait_time = rand_range(0.0, 0.3)
+    $ShowTimer.start()
+    yield($ShowTimer, "timeout")
+    $AnimationPlayer.play("spawn")
+    
 func area_entered(area):
     if self == area.get_owner().topmost_popup:
+        $AnimationPlayer.play_backwards("spawn")
+        yield($AnimationPlayer, "animation_finished")
         queue_free()
  
 func _on_advertisement_area_entered(area):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://window.gd" type="Script" id=2]
 
@@ -12,6 +12,30 @@ extents = Vector2( 30.9641, 27.407 )
 [sub_resource type="RectangleShape2D" id=3]
 resource_local_to_scene = true
 extents = Vector2( 25.8564, 20.5764 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "spawn"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
 
 [node name="Window" type="Node2D" groups=[
 "popups",
@@ -84,6 +108,13 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/body"]
 position = Vector2( 36.2724, 30.4269 )
 shape = SubResource( 3 )
+
+[node name="ShowTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/spawn = SubResource( 4 )
 [connection signal="area_entered" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/Area2D" to="." method="area_entered"]
 [connection signal="area_exited" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/Area2D" to="." method="area_exited"]
 [connection signal="resized" from="Panel/MarginContainer/VBoxContainer/AdvColorRect" to="." method="_on_AdvColorRect_resized"]
