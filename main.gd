@@ -9,22 +9,22 @@ var maxPopups = 20
 var currentControllerIndex = 0
 var controllers = [
     "res://controllers/normal.tscn",
-    "res://controllers/rotated.tscn",
-    "res://controllers/flappy.tscn",
-    "res://controllers/multi.tscn",
-    "res://controllers/dark.tscn",
-    "res://controllers/mirrored.tscn",
-    "res://controllers/slow.tscn",
-    "res://controllers/fast.tscn",    
-    "res://controllers/shaky.tscn",
-    "res://controllers/rocket.tscn",
-    "res://controllers/slippery.tscn",
-    "res://controllers/tiny.tscn",
-    "res://controllers/giant.tscn",
-    "res://controllers/gravity.tscn",
-    "res://controllers/slingshot.tscn",
-    "res://controllers/pet.tscn",
-    "res://controllers/invisible.tscn",
+    "res://controllers/fast.tscn",  
+    "res://controllers/slow.tscn", 
+    "res://controllers/giant.tscn", #Older users can enable a magnified mouse cursor
+    "res://controllers/tiny.tscn", #if you need more space, you can shrink your cursor
+    "res://controllers/multi.tscn",  #Multiple Corsor help you to get more work done!                
+    "res://controllers/rotated.tscn", #Tip: massage your neck by turning your head 90 degrees.
+    "res://controllers/flappy.tscn", #Motto of the day: reach for the starts!
+    "res://controllers/dark.tscn", #dark mode is great for working at night
+    "res://controllers/mirrored.tscn", #pilots prefer inverted controls
+    "res://controllers/shaky.tscn", #Tip: remember to dring enough coffein at work
+    "res://controllers/rocket.tscn", #Boost your creativity like a rocket!
+    "res://controllers/slippery.tscn", #Winter is coming
+    "res://controllers/gravity.tscn", #Let your curser help you lift your heavy workload.
+    "res://controllers/slingshot.tscn", #Fatigue detected! Relax with a quick minigolf session.
+    "res://controllers/pet.tscn", #Let your cursor be your autonomous friend!
+    "res://controllers/invisible.tscn", # Hide your cursor for a focused view
 ]
 onready var controller = null
 
@@ -94,7 +94,6 @@ func crash():
     get_tree().change_scene("res://crash.tscn")
     
 func changeController(diff):
-    $Notification.notify("Achtung! Dies ist ein Test!")
     
     var currentPosition = Vector2(0,0)
     if controller:
@@ -109,6 +108,9 @@ func changeController(diff):
 
     $ControllerLabel.text = controller.name
     controller.get_child(0).position = currentPosition
+    
+    if controller.get_child(0).hasClippy:
+        $Notification.notify(controller.get_child(0).notificationText)
     
 func spawnPopups(wmin, wmax):
     var numPopups = get_tree().get_nodes_in_group("popups").size()
