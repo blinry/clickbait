@@ -100,5 +100,4 @@ script = ExtResource( 2 )
 
 [node name="Notification" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1919.54, 1080.14 )
-rotation = -1.5708
 [connection signal="input_event" from="Icon/Sprite/Area2D" to="." method="icon_clicked"]
