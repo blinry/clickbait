@@ -26,6 +26,7 @@ script = ExtResource( 1 )
 anims/ping = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
 position = Vector2( -10.8543, -20.4143 )
 rotation = -0.453786
 scale = Vector2( 0.0774754, 0.0774754 )
