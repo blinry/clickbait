@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://fonts/comic-jens.jens.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://window.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 1 )
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.8221, 24.9003 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
 extents = Vector2( 30.9641, 27.407 )
 
@@ -18,45 +13,6 @@ extents = Vector2( 30.9641, 27.407 )
 "popups",
 ]]
 script = ExtResource( 2 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-margin_right = 478.0
-margin_bottom = 411.0
-color = Color( 0.635294, 0.721569, 0.831373, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
-margin_left = 12.0
-margin_top = 68.0
-margin_right = 465.0
-margin_bottom = 399.0
-color = Color( 0.894118, 0.054902, 0.784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-position = Vector2( 427.743, 6.36506 )
-scale = Vector2( 0.150782, 0.439814 )
-polygon = PoolVector2Array( 1.58539, 1.22586, 2.1814, 102.543, 300.79, 103.075, 298.981, 1.82184 )
-
-[node name="Label" type="Label" parent="Polygon2D"]
-visible = false
-margin_left = 111.0
-margin_top = 19.0
-margin_right = 176.0
-margin_bottom = 91.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 478.0
@@ -100,7 +56,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/Area2D"]
 position = Vector2( -51.679, 58.9174 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AdvColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer"]
 margin_top = 60.0
@@ -116,7 +72,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect/advertisement"]
 position = Vector2( 42.2396, 37.5792 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 [connection signal="area_entered" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/Area2D" to="." method="area_entered"]
 [connection signal="area_exited" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/Area2D" to="." method="area_exited"]
 [connection signal="resized" from="Panel/MarginContainer/VBoxContainer/AdvColorRect" to="." method="_on_AdvColorRect_resized"]
