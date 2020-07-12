@@ -4,6 +4,7 @@ var velocity = Vector2(0,0)
 export var friction = 1.0
 export var shake = 0
 export var user_click = true
+var clickScn = preload("res://clickSignal.tscn")
 
 func _process(delta):
     velocity = velocity * friction
@@ -32,7 +33,12 @@ func _process(delta):
         click()
         
 func click():
-    $ClickSignal.ping()
+    
+    
+    var clickObj = clickScn.instance()
+    clickObj.position = position
+    get_tree().get_current_scene().add_child(clickObj)
+    
     $Area2D.monitorable = true
     print("monitor!")
     $ClickTimer.start()
