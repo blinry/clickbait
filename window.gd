@@ -29,6 +29,7 @@ func area_entered(area):
     if self == area.get_owner().topmost_popup:
         #$Close.pitch_scale = rand_range(0.9,1.1)
         #$Close.play()
+        game.closed_windows += 1
         $AnimationPlayer.play_backwards("spawn")
         yield($AnimationPlayer, "animation_finished")
         queue_free()
@@ -37,6 +38,7 @@ func _on_advertisement_area_entered(area):
     if self == area.get_owner().topmost_popup:
         #$Error.pitch_scale = rand_range(0.8,1.2)
         #$Error.play()
+        game.ad_clicks += 1
         get_parent().spawnPopups(1,3)
     
 func _on_AdvColorRect_resized():
