@@ -3,6 +3,9 @@ extends Node
 var _file = "user://savegame.json"
 var state = {}
 
+var closed_windows = 0
+var ad_clicks = 0
+
 func _ready():
     load_state()
     
