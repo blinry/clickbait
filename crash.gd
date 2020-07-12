@@ -4,7 +4,7 @@ func _ready():
     $Label.text += "\n\nYou closed "+str(game.closed_windows)+" windows."
     $Label.text += "\nYou clicked on "+str(game.ad_clicks)+" popups."
     $Label.text += "\n\nThanks for playing! <3"
-    $Label.text += "\n\nPress escape to restart. You can press 9 and 0 to change modes."
+    $Label.text += "\n\nPress q to restart. You can press 9 and 0 to change modes."
     
 
 func _input(event):

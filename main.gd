@@ -6,6 +6,8 @@ var intro_phase = 0
 
 var maxPopups = 20
 
+var _music_position
+
 var currentControllerIndex = 0
 var controllers = [
     "res://controllers/normal.tscn",
@@ -53,6 +55,13 @@ func _input(event):
             #spawnPopups(5, 8)
             running = true
             $Icon.hide()
+    if event.is_action_pressed("mute"):
+        if $Music.playing:
+            _music_position = $Music.get_playback_position()
+            $Music.playing = false
+        else:
+            $Music.play()
+            $Music.seek(_music_position)
   
 func _process(delta):
     if running:
@@ -89,7 +98,7 @@ func _process(delta):
 func win():
     print("you win")
     won = true
-    maxPopups = 100
+    maxPopups = 50
     
 func crash():
     get_tree().change_scene("res://crash.tscn")
@@ -116,7 +125,7 @@ func changeController(diff):
 func spawnPopups(wmin, wmax):
     var numPopups = get_tree().get_nodes_in_group("popups").size()
     
-    if numPopups >= 100:
+    if numPopups >= 50:
         crash()
     
     if wmax > wmin:
