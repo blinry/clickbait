@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://window.gd" type="Script" id=2]
 
@@ -8,6 +8,10 @@ extents = Vector2( 24.8221, 24.9003 )
 [sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
 extents = Vector2( 30.9641, 27.407 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 25.8564, 20.5764 )
 
 [node name="Window" type="Node2D" groups=[
 "popups",
@@ -51,7 +55,6 @@ color = Color( 0.737255, 0.133333, 0.133333, 1 )
 
 [node name="Area2D" type="Area2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect"]
 position = Vector2( 76.7403, -33.8961 )
-collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/Area2D"]
@@ -67,12 +70,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="advertisement" type="Area2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect"]
-collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect/advertisement"]
 position = Vector2( 42.2396, 37.5792 )
 shape = SubResource( 2 )
+
+[node name="body" type="Area2D" parent="Panel"]
+position = Vector2( 0.291367, 0.506622 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/body"]
+position = Vector2( 36.2724, 30.4269 )
+shape = SubResource( 3 )
 [connection signal="area_entered" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/Area2D" to="." method="area_entered"]
 [connection signal="area_exited" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/Area2D" to="." method="area_exited"]
 [connection signal="resized" from="Panel/MarginContainer/VBoxContainer/AdvColorRect" to="." method="_on_AdvColorRect_resized"]

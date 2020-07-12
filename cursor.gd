@@ -5,6 +5,8 @@ export var friction = 1.0
 export var shake = 0
 export var user_click = true
 
+var topmost_popup = null
+
 func _process(delta):
     velocity = velocity * friction
     position += velocity
@@ -30,13 +32,23 @@ func _process(delta):
   
     if user_click and Input.is_action_just_pressed("click"):
         click()
+    
+    # Find topmost other area
+    var areas = $AlwaysOnArea.get_overlapping_areas()
+    if areas.size() > 0:
+        var maxIndex = -1
+        for a in areas:
+            var curIndex = a.get_owner().get_index()
+            if curIndex > maxIndex:
+                maxIndex = curIndex
+                topmost_popup = a.get_owner()
+    else:
+        topmost_popup = null
         
 func click():
     $ClickSignal.ping()
     $Area2D.monitorable = true
-    print("monitor!")
     $ClickTimer.start()
 
 func click_timeout():
     $Area2D.monitorable = false
-    print("unmonitor!")
