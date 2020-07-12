@@ -8,10 +8,10 @@ var maxPopups = 20
 var currentControllerIndex = 0
 var controllers = [
     "res://controllers/normal.tscn",
-    "res://controllers/dark.tscn",
     "res://controllers/rotated.tscn",
     "res://controllers/flappy.tscn",
     "res://controllers/multi.tscn",
+    "res://controllers/dark.tscn",
     "res://controllers/mirrored.tscn",
     "res://controllers/slow.tscn",
     "res://controllers/fast.tscn",    
@@ -42,6 +42,9 @@ func _input(event):
     if event.is_action_pressed("quit"):
         Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
         get_tree().paused = true
+    
+    if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
   
 func _process(delta):
     if running:
