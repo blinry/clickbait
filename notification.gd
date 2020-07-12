@@ -14,6 +14,7 @@ func notify(text):
     $Panel/MarginContainer/RichTextLabel.text = text
     print(get_viewport_rect().size)
     $AnimationPlayer.play("open")
+    $Bell.play()
     $Timer.wait_time = text.length()/7
     $Timer.start()
     yield($Timer, "timeout")
