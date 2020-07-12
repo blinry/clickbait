@@ -95,6 +95,7 @@ margin_bottom = 339.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+color = Color( 1, 0.992157, 1, 1 )
 
 [node name="advertisement" type="Area2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect"]
 collision_mask = 2
