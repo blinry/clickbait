@@ -37,8 +37,8 @@ func _input(event):
     if event.is_action_pressed("prev_controller"):
         changeController(-1)
     
-    if event.is_action_pressed("down"):
-        win()
+    #if event.is_action_pressed("down"):
+    #    win()
     
     if event.is_action_pressed("quit"):
         Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

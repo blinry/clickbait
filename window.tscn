@@ -7,29 +7,29 @@
 [ext_resource path="res://fonts/comic-jens.jens.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24.8221, 24.9003 )
+extents = Vector2( 35.7754, 35.482 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 10.0
 content_margin_right = 10.0
 content_margin_top = 10.0
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
 resource_local_to_scene = true
 size = 30
 font_data = ExtResource( 5 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 resource_local_to_scene = true
 extents = Vector2( 30.9641, 27.407 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 resource_local_to_scene = true
 extents = Vector2( 25.8564, 20.5764 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.3
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:scale:x")
@@ -93,7 +93,6 @@ rect_min_size = Vector2( 50, 50 )
 color = Color( 0.737255, 0.133333, 0.133333, 1 )
 
 [node name="Area2D" type="Area2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ColorRect"]
-visible = false
 position = Vector2( 76.7403, -33.8961 )
 collision_mask = 2
 
@@ -113,13 +112,12 @@ margin_top = 60.0
 margin_right = 460.0
 margin_bottom = 339.0
 size_flags_vertical = 3
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
 valign = 1
 autowrap = true
-color = Color( 1, 0.992157, 1, 1 )
 
 [node name="advertisement" type="Area2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect"]
 position = Vector2( 0.150414, 0.128616 )
@@ -127,7 +125,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect/advertisement"]
 position = Vector2( 42.2396, 37.5792 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="body" type="Area2D" parent="Panel"]
 position = Vector2( 0.291367, 0.506622 )
@@ -136,14 +134,14 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/body"]
 position = Vector2( 36.2724, 30.4269 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="ShowTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/spawn = SubResource( 5 )
+anims/spawn = SubResource( 6 )
 
 [node name="Pop" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 238.055, 183.049 )

@@ -6,7 +6,7 @@ func _input(event):
         $Cursor.rotation_degrees += delta.x/10
 
 func _process(delta):
-    if Input.is_action_pressed("rightclick"):
+    if Input.is_action_pressed("click"):
         var direction = Vector2(0,-1).rotated(-PI/6 + $Cursor.rotation)
         $Cursor.velocity += direction/2
         $Cursor/Particles.emitting = true
