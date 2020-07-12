@@ -30,9 +30,7 @@ custom_fonts/font = SubResource( 1 )
 text = "A problem has been detected and your system has been shut down to prevent
 damage to your computer:
 
-TOO_MANY_WINDOWS_EXCEPTION
-
-Thanks for playing! :)"
+TOO_MANY_WINDOWS_EXCEPTION"
 __meta__ = {
 "_edit_use_anchors_": false
 }
