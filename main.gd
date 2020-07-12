@@ -44,8 +44,15 @@ func _input(event):
         Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
         get_tree().paused = true
     
-    #if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
-    #    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    if event.is_action_pressed("click"):
+        if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+        if not running:
+            changeController(0)
+            controller.get_child(0).position = event.position
+            #spawnPopups(5, 8)
+            running = true
+            $Icon.hide()
   
 func _process(delta):
     if running:
@@ -136,13 +143,3 @@ func spawnPopup(text=""):
     var btn = btnScn.instance()
     btn.set_text(text)
     add_child(btn)
-
-func icon_clicked(viewport, event, shape_idx):
-    if event is InputEventMouseButton:
-        changeController(0)
-        controller.get_child(0).position = event.position
-        #spawnPopups(5, 8)
-        running = true
-        $Icon.hide()
-        if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
-            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

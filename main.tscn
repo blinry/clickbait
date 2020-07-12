@@ -57,6 +57,7 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="Icon"]
+visible = false
 position = Vector2( 661.193, 294.565 )
 scale = Vector2( 0.35014, 0.35014 )
 collision_layer = 16
@@ -72,4 +73,3 @@ script = ExtResource( 2 )
 
 [node name="Notification" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1919.54, 1080.14 )
-[connection signal="input_event" from="Icon/Area2D" to="." method="icon_clicked"]
