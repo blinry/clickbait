@@ -5,6 +5,10 @@ var running = false
 var currentControllerIndex = 0
 var controllers = [
     "res://controllers/normal.tscn",
+    "res://controllers/dark.tscn",
+    "res://controllers/rotated.tscn",
+    "res://controllers/flappy.tscn",
+    "res://controllers/multi.tscn",
     "res://controllers/mirrored.tscn",
     "res://controllers/slow.tscn",
     "res://controllers/fast.tscn",    

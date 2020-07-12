@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://controllers/multi.gd" type="Script" id=1]
+[ext_resource path="res://cursor.tscn" type="PackedScene" id=3]
+
+[node name="MultiController" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Cursor" parent="." instance=ExtResource( 3 )]
+friction = 0.9
+
+[node name="Cursor2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 284.995, 841.544 )
+friction = 0.9
+
+[node name="Cursor3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1373.54, 841.545 )
+friction = 0.9
+
+[node name="Cursor4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 351.088, 440.508 )
+friction = 0.9
+
+[node name="Cursor6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 785.294, 168.837 )
+friction = 0.9
+
+[node name="Cursor5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1735.61, 440.508 )
+friction = 0.9

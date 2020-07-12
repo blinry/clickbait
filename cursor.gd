@@ -51,7 +51,7 @@ func click():
     
     var clickObj = clickScn.instance()
     clickObj.position = position
-    get_tree().get_current_scene().add_child(clickObj)
+    get_tree().get_root().add_child(clickObj)
     
     $Area2D.monitorable = true
     $ClickTimer.start()

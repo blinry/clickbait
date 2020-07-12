@@ -11,6 +11,7 @@ z_index = 1
 script = ExtResource( 2 )
 
 [node name="cursor" type="Sprite" parent="."]
+modulate = Color( 0.352941, 0.380392, 0.819608, 1 )
 position = Vector2( 33.1228, 49.4712 )
 scale = Vector2( 0.06, 0.06 )
 texture = ExtResource( 1 )
