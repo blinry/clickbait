@@ -5,23 +5,20 @@ var controllers = [
     "res://controllers/normal.tscn",
     "res://controllers/mirrored.tscn",
     "res://controllers/slow.tscn",
-    "res://controllers/fast.tscn",
+    "res://controllers/fast.tscn",    
+    "res://controllers/shaky.tscn",
+    "res://controllers/rocket.tscn",
     "res://controllers/slippery.tscn",
     "res://controllers/tiny.tscn",
     "res://controllers/giant.tscn",
     "res://controllers/gravity.tscn",
     "res://controllers/slingshot.tscn",
-    "res://controllers/rocket.tscn",
-    "res://controllers/shaky.tscn",
     "res://controllers/pet.tscn",
     "res://controllers/invisible.tscn",
 ]
 onready var controller = $Controller
 
 var btnCount = 0
-
-#func _ready():
-    #changeController(0)
 
 func _input(event):
     if event.is_action_pressed("click"):
@@ -32,14 +29,10 @@ func _input(event):
         changeController(1)
         
     if event.is_action_pressed("prev_controller"):
-        changeController(-1)
+        changeController(-1)   
        
 func changeController(diff):
-    #for btn in get_tree().get_nodes_in_group("popups"):
-    #    btn.queue_free()
-    
     var currentPosition = controller.get_child(0).position
-    #var currentVelocity = controller.get_child(0).velocity
     
     controller.queue_free()
     
@@ -50,14 +43,12 @@ func changeController(diff):
 
     $ControllerLabel.text = controller.name
     controller.get_child(0).position = currentPosition
-    #controller.get_child(0).velocity = currentVelocity
-    spawnPopups(3, 8)
 
 func button_clicked():
-    btnCount -= 1
-    print(btnCount)
-    if btnCount == 0:
-        changeController(1) 
+    var numPopups = get_tree().get_nodes_in_group("popups").size()
+    if numPopups == 0:
+        changeController(1)
+        spawnPopups(5, 8)
     
 func spawnPopups(wmin, wmax):
     btnCount = randi() % (wmax-wmin) + wmin
@@ -67,8 +58,7 @@ func spawnPopups(wmin, wmax):
         add_child(btn)
         btn.connect("clicked", self, "button_clicked")
 
-
 func _on_Area2D_area_entered(area):
     changeController(0)
-    spawnPopups(2, 4)
+    spawnPopups(5, 8)
     $Icon.hide()
