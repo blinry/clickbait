@@ -1,7 +1,5 @@
 extends Node2D
 
-signal clicked
-
 onready var adColorRect = $Panel/MarginContainer/VBoxContainer/AdvColorRect
 onready var adCollisionShape = $Panel/MarginContainer/VBoxContainer/AdvColorRect/advertisement/CollisionShape2D
 
@@ -18,12 +16,10 @@ func _ready():
     position.y = rand_range(padding,get_viewport_rect().size.y-padding-h)
     
 func area_entered(area):
-    emit_signal("clicked")
     queue_free()
  
 func _on_advertisement_area_entered(area):
     get_parent().spawnPopups(1,3)
-
 
 func _on_AdvColorRect_resized():
     adCollisionShape.position = adColorRect.rect_size / 2

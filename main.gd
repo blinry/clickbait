@@ -66,7 +66,6 @@ func spawnPopups(wmin, wmax):
         var btnScn = load("res://window.tscn")
         var btn = btnScn.instance()
         add_child(btn)
-        btn.connect("clicked", self, "button_clicked")
 
 func _on_Area2D_area_entered(area):
     changeController(0)
