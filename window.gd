@@ -22,15 +22,21 @@ func _ready():
     $ShowTimer.start()
     yield($ShowTimer, "timeout")
     $AnimationPlayer.play("spawn")
+    $Pop.pitch_scale = rand_range(0.9,1.1)
+    $Pop.play()
     
 func area_entered(area):
     if self == area.get_owner().topmost_popup:
+        #$Close.pitch_scale = rand_range(0.9,1.1)
+        #$Close.play()
         $AnimationPlayer.play_backwards("spawn")
         yield($AnimationPlayer, "animation_finished")
         queue_free()
  
 func _on_advertisement_area_entered(area):
     if self == area.get_owner().topmost_popup:
+        #$Error.pitch_scale = rand_range(0.8,1.2)
+        #$Error.play()
         get_parent().spawnPopups(1,3)
     
 func _on_AdvColorRect_resized():
