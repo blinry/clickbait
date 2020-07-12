@@ -18,15 +18,11 @@ var controllers = [
     "res://controllers/pet.tscn",
     "res://controllers/invisible.tscn",
 ]
-onready var controller = $Controller
+onready var controller = null
 
 var btnCount = 0
 
-func _input(event):
-    if event.is_action_pressed("click"):
-        if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
-            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    
+func _input(event): 
     if event.is_action_pressed("next_controller"):
         changeController(1)
         
@@ -41,9 +37,11 @@ func _process(delta):
             spawnPopups(5, 8)
        
 func changeController(diff):
-    var currentPosition = controller.get_child(0).position
+    var currentPosition = Vector2(0,0)
+    if controller:
+        currentPosition = controller.get_child(0).position
     
-    controller.queue_free()
+        controller.queue_free()
     
     currentControllerIndex = (currentControllerIndex + diff + controllers.size()) % controllers.size()
     var controllerScene = load(controllers[currentControllerIndex])
@@ -67,8 +65,12 @@ func spawnPopups(wmin, wmax):
         var btn = btnScn.instance()
         add_child(btn)
 
-func _on_Area2D_area_entered(area):
-    changeController(0)
-    spawnPopups(5, 8)
-    running = true
-    $Icon.hide()
+func icon_clicked(viewport, event, shape_idx):
+    if event is InputEventMouseButton:
+        changeController(0)
+        controller.get_child(0).position = event.position
+        spawnPopups(5, 8)
+        running = true
+        $Icon.hide()
+        if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
+            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
