@@ -4,6 +4,8 @@ var velocity = Vector2(0,0)
 export var friction = 1.0
 export var shake = 0
 export var user_click = true
+export var hasClippy = true
+export var notificationText = ""
 var clickScn = preload("res://clickSignal.tscn")
 
 var topmost_popup = null

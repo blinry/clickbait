@@ -8,3 +8,4 @@ script = ExtResource( 1 )
 
 [node name="Cursor" parent="." instance=ExtResource( 3 )]
 rotation = 1.57079
+notificationText = "Tip: massage your neck by turning your head 90 degrees."

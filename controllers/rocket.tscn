@@ -25,6 +25,7 @@ script = ExtResource( 1 )
 
 [node name="Cursor" parent="." instance=ExtResource( 3 )]
 friction = 0.99
+notificationText = "Boost your creativity like a rocket!"
 
 [node name="Particles" type="Particles2D" parent="Cursor"]
 show_behind_parent = true
