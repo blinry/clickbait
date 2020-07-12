@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://clippy.png" type="Texture" id=1]
+[ext_resource path="res://notification.gd" type="Script" id=2]
+[ext_resource path="res://fonts/comic-jens.jens.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.996078, 0.815686, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 14
+anti_aliasing = false
+
+[sub_resource type="Theme" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "open"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -90, -0.25, 0, 1, -3.08433, 0, -0.56, -3.08432, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[node name="Notification" type="Node2D"]
+rotation = -1.5708
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_top = -0.00102596
+margin_left = -502.488
+margin_top = -228.512
+margin_right = -21.4877
+margin_bottom = -42.5123
+rect_rotation = -0.02534
+rect_pivot_offset = Vector2( 502.132, 228.566 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Panel"]
+position = Vector2( 413.92, 93.3057 )
+scale = Vector2( 0.207808, 0.207808 )
+z_index = 1
+texture = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -150.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer"]
+margin_right = 321.0
+margin_bottom = 166.0
+theme = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+meta_underlined = false
+text = "test"
+scroll_active = false
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+anchor_left = 1.044
+anchor_top = 1.228
+anchor_right = 1.044
+anchor_bottom = 1.228
+margin_left = -92.727
+margin_top = -76.217
+margin_right = -52.727
+margin_bottom = -36.217
+rect_rotation = 45.0
+color = Color( 1, 0.996078, 0.815686, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/open = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0

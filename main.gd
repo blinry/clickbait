@@ -68,6 +68,8 @@ func crash():
     get_tree().change_scene("res://crash.tscn")
     
 func changeController(diff):
+    $Notification.notify("Achtung! Dies ist ein Test!")
+    
     var currentPosition = Vector2(0,0)
     if controller:
         currentPosition = controller.get_child(0).position
