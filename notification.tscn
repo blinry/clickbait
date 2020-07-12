@@ -35,6 +35,7 @@ tracks/0/keys = {
 
 [node name="Notification" type="Node2D"]
 rotation = -1.5708
+z_index = 1
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]

@@ -119,6 +119,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
 valign = 1
 autowrap = true
+color = Color( 1, 0.992157, 1, 1 )
 
 [node name="advertisement" type="Area2D" parent="Panel/MarginContainer/VBoxContainer/AdvColorRect"]
 position = Vector2( 0.150414, 0.128616 )
