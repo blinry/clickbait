@@ -1,6 +1,9 @@
 extends Node2D
 
 var running = false
+var won = false
+
+var maxPopups = 20
 
 var currentControllerIndex = 0
 var controllers = [
@@ -33,6 +36,9 @@ func _input(event):
     if event.is_action_pressed("prev_controller"):
         changeController(-1)
     
+    if event.is_action_pressed("down"):
+        win()
+    
     if event.is_action_pressed("quit"):
         Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
         get_tree().paused = true
@@ -42,8 +48,25 @@ func _process(delta):
         var numPopups = get_tree().get_nodes_in_group("popups").size()
         if numPopups == 0:
             changeController(1)
-            spawnPopups(5, 8)
-       
+            if currentControllerIndex == 0:
+                win()
+            else:
+                spawnPopups(5, 8)
+        if won:
+            if randi() % (2) == 0:
+                spawnPopups(1,1)
+        else:
+            if randi() % (60*5) == 0:
+                spawnPopups(1,1)
+      
+func win():
+    print("you win")
+    won = true
+    maxPopups = 100
+    
+func crash():
+    get_tree().change_scene("res://crash.tscn")
+    
 func changeController(diff):
     var currentPosition = Vector2(0,0)
     if controller:
@@ -62,11 +85,18 @@ func changeController(diff):
 func spawnPopups(wmin, wmax):
     var numPopups = get_tree().get_nodes_in_group("popups").size()
     
-    btnCount = randi() % (wmax-wmin) + wmin
+    if numPopups >= 100:
+        crash()
     
+    if wmax > wmin:
+        btnCount = (randi() % (wmax-wmin)) + wmin
+    else:
+        btnCount = wmin
+        
     # Limit total number of popups.
-    var maxPopups = 20
+    print(maxPopups)
     btnCount = min(btnCount, maxPopups-numPopups)
+    print(btnCount)
     
     for i in range(btnCount):
         var btnScn = load("res://window.tscn")
