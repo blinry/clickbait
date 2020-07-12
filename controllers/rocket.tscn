@@ -28,7 +28,7 @@ friction = 0.99
 
 [node name="Particles" type="Particles2D" parent="Cursor"]
 show_behind_parent = true
-position = Vector2( 31.4869, 67.7913 )
+position = Vector2( 44.2449, 85.7685 )
 rotation = -0.396451
 amount = 64
 local_coords = false

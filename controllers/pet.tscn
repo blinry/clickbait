@@ -14,6 +14,6 @@ user_click = false
 
 [node name="Crosshair" type="Sprite" parent="."]
 position = Vector2( 960.295, 503.315 )
-scale = Vector2( 0.0984615, 0.0828924 )
+scale = Vector2( 0.04, 0.04 )
 z_index = 1
 texture = ExtResource( 2 )
